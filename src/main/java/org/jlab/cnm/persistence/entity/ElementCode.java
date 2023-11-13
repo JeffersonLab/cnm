@@ -111,11 +111,8 @@ public class ElementCode implements Serializable {
             return false;
         }
         ElementCode other = (ElementCode) object;
-        if ((this.elementCodeId == null && other.elementCodeId != null) ||
-                (this.elementCodeId != null && !this.elementCodeId.equals(other.elementCodeId))) {
-            return false;
-        }
-        return true;
+        return (this.elementCodeId != null || other.elementCodeId == null) &&
+                (this.elementCodeId == null || this.elementCodeId.equals(other.elementCodeId));
     }
 
     @Override

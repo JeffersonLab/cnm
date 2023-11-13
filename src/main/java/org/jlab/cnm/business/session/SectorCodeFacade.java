@@ -144,7 +144,7 @@ public class SectorCodeFacade extends AbstractFacade<SectorCode> {
         List<Predicate> filters = new ArrayList<>();
 
         if (xxCode != null && !xxCode.trim().isEmpty()) {
-            filters.add(cb.like(cb.upper(root.<String>get("xxCode")), xxCode.toUpperCase()));
+            filters.add(cb.like(cb.upper(root.get("xxCode")), xxCode.toUpperCase()));
         }        
         
         if (grouping != null && !grouping.trim().isEmpty()) {
@@ -175,7 +175,7 @@ public class SectorCodeFacade extends AbstractFacade<SectorCode> {
         List<Predicate> filters = new ArrayList<>();
 
         if (xxCode != null && !xxCode.trim().isEmpty()) {
-            filters.add(cb.like(cb.upper(root.<String>get("xxCode")), xxCode.toUpperCase()));
+            filters.add(cb.like(cb.upper(root.get("xxCode")), xxCode.toUpperCase()));
         }        
         
         if (grouping != null && !grouping.trim().isEmpty()) {

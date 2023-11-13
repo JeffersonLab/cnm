@@ -126,11 +126,8 @@ public class SectorCode implements Serializable {
             return false;
         }
         SectorCode other = (SectorCode) object;
-        if ((this.sectorCodeId == null && other.sectorCodeId != null) ||
-                (this.sectorCodeId != null && !this.sectorCodeId.equals(other.sectorCodeId))) {
-            return false;
-        }
-        return true;
+        return (this.sectorCodeId != null || other.sectorCodeId == null) &&
+                (this.sectorCodeId == null || this.sectorCodeId.equals(other.sectorCodeId));
     }
 
     @Override

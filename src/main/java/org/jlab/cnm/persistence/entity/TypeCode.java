@@ -140,11 +140,8 @@ public class TypeCode implements Serializable {
             return false;
         }
         TypeCode other = (TypeCode) object;
-        if ((this.typeCodeId == null && other.typeCodeId != null) ||
-                (this.typeCodeId != null && !this.typeCodeId.equals(other.typeCodeId))) {
-            return false;
-        }
-        return true;
+        return (this.typeCodeId != null || other.typeCodeId == null) &&
+                (this.typeCodeId == null || this.typeCodeId.equals(other.typeCodeId));
     }
 
     @Override

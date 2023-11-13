@@ -127,11 +127,8 @@ public class LocatorCode implements Serializable {
             return false;
         }
         LocatorCode other = (LocatorCode) object;
-        if ((this.locatorCodeId == null && other.locatorCodeId != null) ||
-                (this.locatorCodeId != null && !this.locatorCodeId.equals(other.locatorCodeId))) {
-            return false;
-        }
-        return true;
+        return (this.locatorCodeId != null || other.locatorCodeId == null) &&
+                (this.locatorCodeId == null || this.locatorCodeId.equals(other.locatorCodeId));
     }
 
     @Override

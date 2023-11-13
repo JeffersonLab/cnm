@@ -64,7 +64,7 @@ public class TypeCodeFacade extends AbstractFacade<TypeCode> {
         }
 
         if(vvCode != null && !vvCode.trim().isEmpty()) {
-            filters.add(cb.like(cb.upper(root.<String>get("vvCode")), vvCode.toUpperCase()));
+            filters.add(cb.like(cb.upper(root.get("vvCode")), vvCode.toUpperCase()));
         }
         
         if (grouping != null && !grouping.trim().isEmpty()) {
@@ -103,7 +103,7 @@ public class TypeCodeFacade extends AbstractFacade<TypeCode> {
         }      
         
         if(vvCode != null && !vvCode.trim().isEmpty()) {
-            filters.add(cb.like(cb.upper(root.<String>get("vvCode")), vvCode.toUpperCase()));
+            filters.add(cb.like(cb.upper(root.get("vvCode")), vvCode.toUpperCase()));
         }     
         
         if (grouping != null && !grouping.trim().isEmpty()) {

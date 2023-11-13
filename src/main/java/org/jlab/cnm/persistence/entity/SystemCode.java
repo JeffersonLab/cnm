@@ -113,11 +113,8 @@ public class SystemCode implements Serializable {
             return false;
         }
         SystemCode other = (SystemCode) object;
-        if ((this.systemCodeId == null && other.systemCodeId != null) ||
-                (this.systemCodeId != null && !this.systemCodeId.equals(other.systemCodeId))) {
-            return false;
-        }
-        return true;
+        return (this.systemCodeId != null || other.systemCodeId == null) &&
+                (this.systemCodeId == null || this.systemCodeId.equals(other.systemCodeId));
     }
 
     @Override
