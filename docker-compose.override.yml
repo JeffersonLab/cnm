@@ -1,0 +1,3 @@
+services:
+  cnm:
+    image: jeffersonlab/cnm:1.0.0

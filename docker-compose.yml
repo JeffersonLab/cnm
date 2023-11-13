@@ -1,0 +1,48 @@
+services:
+  oracle:
+    extends:
+      file: deps.yml
+      service: oracle
+
+  keycloak:
+    extends:
+      file: deps.yml
+      service: keycloak
+
+  puppet:
+    extends:
+      file: deps.yml
+      service: puppet
+
+  mailhog:
+    extends:
+      file: deps.yml
+      service: mailhog
+
+  cnm:
+    hostname: cnm
+    container_name: cnm
+    ports:
+      - "8443:8443"
+      - "8080:8080"
+      - "9990:9990"
+    environment:
+      KEYCLOAK_REALM: 'test-realm'
+      KEYCLOAK_RESOURCE: 'cnm'
+      KEYCLOAK_SECRET: 'yHi6W2raPmLvPXoxqMA7VWbLAA2WN0eB'
+      KEYCLOAK_FRONTEND_SERVER_URL: 'http://localhost:8081'
+      KEYCLOAK_BACKEND_SERVER_URL: 'http://keycloak:8080'
+      ORACLE_DATASOURCE: 'cnm'
+      ORACLE_SERVER: 'oracle:1521'
+      ORACLE_USER: 'CNM_OWNER'
+      ORACLE_PASS: 'password'
+      ORACLE_SERVICE: 'xepdb1'
+      PUPPET_SHOW_SERVER_URL: 'http://puppet:3000'
+      BACKEND_SERVER_URL: 'http://cnm:8080'
+      FRONTEND_SERVER_URL: 'https://localhost:8443'
+      TZ: 'America/New_York'
+      CNM_FEEDBACK_SENDER_ADDRESS: 'cnm@example.com'
+      CNM_FEEDBACK_TO_ADDRESS_CSV: 'recipient1@example.com,recipient2@example.com'
+      CNM_CONTENT_CONTACT: 'bob@example.com'
+      CNM_TECHNICAL_CONTACT: 'larry@example.com'
+      CNM_DOC_CSV: 'https://github.com/JeffersonLab/cnm|CNM Home'
