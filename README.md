@@ -50,7 +50,7 @@ This application requires a Java 11+ JVM and standard library to run, plus a Jav
 ## Configure
 
 ### Configtime
-Wildfly must be pre-configured before the first deployment of the app. The [wildfly bash scripts](https://github.com/JeffersonLab/wildfly#configure) can be used to accomplish this. See the [Dockerfile](https://github.com/JeffersonLab/srm/blob/main/Dockerfile) for an example.
+Wildfly must be pre-configured before the first deployment of the app. The [wildfly bash scripts](https://github.com/JeffersonLab/wildfly#configure) can be used to accomplish this. See the [Dockerfile](https://github.com/JeffersonLab/cnm/blob/main/Dockerfile) for an example.
 
 ### Runtime
 Uses the [Smoothness Environment Variables](https://github.com/JeffersonLab/smoothness#environment-variables).
