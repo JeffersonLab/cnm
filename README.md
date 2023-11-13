@@ -16,7 +16,7 @@ A [Java EE 8](https://en.wikipedia.org/wiki/Jakarta_EE) web application for mana
 ---
 
 ## Overview
-The CEBAF nomenclature application allows staff to use a shared naming system.
+The CEBAF nomenclature application allows staff to use a shared naming system for machine components.
 
 ## Quick Start with Compose
 1. Grab project
