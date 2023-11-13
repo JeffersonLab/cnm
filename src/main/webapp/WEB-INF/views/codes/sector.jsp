@@ -30,7 +30,7 @@
         </style>        
     </jsp:attribute>
     <jsp:attribute name="scripts">
-        <script type="text/javascript" src="${pageContext.request.contextPath}/resources/v${initParam.resourceVersionNumber}/js/sector.js"></script>        
+        <script type="text/javascript" src="${pageContext.request.contextPath}/resources/v${initParam.releaseNumber}/js/sector.js"></script>
     </jsp:attribute>        
     <jsp:body>
         <section>    
