@@ -1,0 +1,68 @@
+#editable-row-table-control-panel button {
+    vertical-align: top;
+}
+.outer-table thead th:first-child {
+    width: 80px;
+}
+.inner-table tbody td:first-child {
+    width: 75px;
+}       
+.outer-table thead th:nth-child(2) {
+    width: 75px;
+}
+.inner-table tbody td:nth-child(2) {
+    width: 75px;
+}
+.outer-table thead th:nth-child(4) {
+    width: 135px;
+}
+.inner-table tbody td:nth-child(4) {
+    width: 135px;
+    max-width: 135px;
+    word-wrap: break-word;
+}            
+.inner-table tbody td:nth-child(3) {
+    width: 375px;
+    max-width: 375px;
+    word-wrap: break-word;
+}            
+.attribute-table {
+    border-collapse: collapse;
+    margin-bottom: 0.5em;
+}
+.attribute-table td {
+    padding: 0 0 0.5em 0;
+}
+.attribute-table td:nth-child(1) {
+    padding-right: 1em;
+    font-weight: bold;
+    white-space: nowrap;
+}
+.attribute-table td:nth-child(1):after {
+    content: ":";
+}
+#attribute-add-button-panel {
+    margin-bottom: 1em;
+    font-size: 14px;    
+}
+#attribute-add-button-panel {
+    margin-top: 0.5em;
+}
+#edit-attributes-wrapper {
+    margin-bottom: 5em;
+    height: 425px;
+    overflow: auto;
+}
+.small-icon {
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+    vertical-align: top;
+}
+.small-icon.delete-icon {
+    background: url("../img/redx.png") 0 0;    
+    cursor: pointer;
+}   
+.sort-handle {
+    cursor: move;
+}

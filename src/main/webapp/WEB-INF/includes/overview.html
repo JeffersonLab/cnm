@@ -1,0 +1,92 @@
+<h3>Introduction</h3>
+<p>The purpose of the CEBAF Nomenclature Document (CND) is to provide a standard system of unique names to represent pieces of accelerator and experimental equipment.  Naming is mostly limited to objects found along the beam line.   Nomenclature identification is used on drawings, schematics, computer software, and other sources of information.   IOCs and equipment racks have their own independent naming scheme.  Items in the LERF and Halls may be included.</p>
+<h3>Name Construction</h3>
+<p>
+    All names have a maximum of nine characters, a minimum of five characters, and all letters are upper case.  Names are constructed from a set of up to five codes, which reveal the object's system, type, sector, locator, and element number.  Only the first three codes are required.  The
+    letters S V V X X Y Y Z Z are used to symbolize the five codes in a nine-character name. The
+    meaning of these letters is as follows:
+</p>
+
+<table>
+    <tbody>
+        <tr>
+            <th>S</th>
+            <td>Technical System</td>
+            <td>A single letter is used to symbolize a major system
+                such as a C for cryogenics or M for magnets.</td>
+        </tr>
+        <tr>
+            <th>VV</th>
+            <td>Component Type</td>
+            <td>Two letters are used to symbolize component types
+                such as CV for check valve (Cryogenics system).  All component types are
+                dependent on a technical system.  In other words the component type may have a different meaning depending on the system.  For example CV means Yao Cavity if paired with the Instrumentation system or it means 12GeV Dipole when paired with the Magnet system. </td>
+        </tr>
+        <tr>
+            <th>XX</th>
+            <td>Sector or Subsystem</td>
+            <td>Two characters, which can be a number or letter
+                in either position, are used to symbolize a location, a subsystem, or a
+                large piece of equipment.  For example, 1L is used for the North Linac, 29
+                is used for the vacuum system in the Cryogenic Test Facility, and 3E is used
+                for the third extractor. Sectors and subsystems are not tied to a particular
+                technical system.  Not all technical systems use the XX positions.  In which
+                case, the positions are left blank</td>
+        </tr>
+        <tr>
+            <th>YY</th>
+            <td>Locator</td>
+            <td>Two numbers are used to symbolize a location within a
+                sector (XX), such as the sequential numbering of quadrupoles within a
+                sector.  All non-girdered components are numbered per the upstream quad.
+                Exceptions:  Dipoles are numbered sequentially within a sector.
+                Cryomodules match the 'zone' number (first module is #2
+                and the last is #26).  This number controls the upstream
+                components.</td>
+        </tr>
+        <tr>
+            <th>ZZ</th>
+            <td>Element Number</td>
+            <td>Optionally one or two trailing letters or numbers are used to provide more specificity when naming a component.  An example of the usage of element numbers
+                is using numbers 1 through 8 to indicate the cavities in a cryomodule. Using
+                H to indicate a horizontal configuration for a beam position monitor is
+                another example.</td>
+        </tr>
+    </tbody>
+</table>
+<p>
+    Example:  IDA2C04
+</p>
+<p>
+    This is an Insertable Beam Stop in Line B of the BSY between quad girders
+    04 & 05.  This is broken down as follows:
+</p>
+<table>
+    <tbody>
+        <tr><th>I</th><td>Instrumentation System</td></tr>
+        <tr><th>DA</th><td>Beam Stop, retractable</td></tr>
+        <tr><th>2C</th><td>Line 'B' - Beam Switchyard</td></tr>
+        <tr><th>04</th><td>Located down beam of the 4th Quad</td></tr>
+    </tbody>
+</table>
+
+<h3>Background</h3>
+<p>
+    A Nomenclature Document was first published as part of CEBAF
+    Technical note 91-083 in October 1991.  Updated revisions were published
+    and distributed in December 1992 and 1993.  The document was converted to a
+    menu-driven computer database in 1994, which provided a search capability.
+    The software was upgraded in April 1995 to include the capabilities to
+    print or browse through the entire document. In 1996, the nomenclature was
+    added to the JLAB web home page.
+</p>
+<p>
+    Somewhere along the line it seems the database was abandoned and an Excel file was used instead.   In 2015 the nomenclature was moved to its current home on the accelerator
+    Intranet web server and database where a form-based interface allows easy up-keep for maintainers.
+</p>
+<h3>Other Naming Schemes and Aliases</h3>
+<p>The EPICS control system PV name associated with a component often differs from the CEBAF Nomenclature.
+    The CEBAF Element Database (CED) may provide another alternate name for a component.
+    For example the cryomodule with canonical CND name RCA1L04 is known as 1L04 in the CED and as R14 in EPICS.
+    It is also possible to reference this component as
+    CCA1L04 because like many components it is part of multiple systems (both RF and Cryo).</p>
