@@ -26,7 +26,7 @@
                                         <select name="system" id="system">
                                             <option></option>
                                             <c:forEach items="${systemList}" var="system">
-                                                <option value="${system.getSCode()}"${param.system eq system.getSCode() ? ' selected="selected"' : ''}><c:out value="${system.getSCode()}"/> - <c:out value="${system.description}"/></option>
+                                                <option value="${system.getSCode()}"${param.system eq system.getSCode().toString() ? ' selected="selected"' : ''}><c:out value="${system.getSCode()}"/> - <c:out value="${system.description}"/></option>
                                             </c:forEach>                    
                                         </select>
                                     </div>
