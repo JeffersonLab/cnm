@@ -16,6 +16,9 @@
         <script type="text/javascript" src="${pageContext.request.contextPath}/resources/v${initParam.releaseNumber}/js/cnm.js"></script>
         <jsp:invoke fragment="scripts"/>
     </jsp:attribute>
+    <jsp:attribute name="footnote">
+        <b>Note:</b> The CED is only accessible from onsite
+    </jsp:attribute>
     <jsp:attribute name="primaryNavigation">
                     <ul>
                         <li${'/overview' eq currentPath ? ' class="current-primary"' : ''}>
