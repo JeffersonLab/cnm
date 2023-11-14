@@ -54,6 +54,15 @@
         <form id="html-export" action="/cnm/export/cnd.html" method="get">
             <input type="hidden" name="attachment" value=""/>
         </form>
-        <form id="pdf-export" action="/cnm/export/cnd.pdf" method="get"></form>
+        <form id="pdf-export" action="${pageContext.request.contextPath}/convert" method="get">
+            <c:url value="convert" var="pdfURL">
+                <c:param name="type" value="pdf"/>
+                <c:param name="url" value="${viewURL}"/>
+                <c:param name="filename" value="calendar.pdf"/>
+            </c:url>
+            <input type="hidden" name="filename" value="cnd.pdf"/>
+            <input type="hidden" name="type" value="pdf"/>
+            <input type="hidden" name="url" value="/cnm/export/cnd.html"/>
+        </form>
     </jsp:body>         
 </t:page>
