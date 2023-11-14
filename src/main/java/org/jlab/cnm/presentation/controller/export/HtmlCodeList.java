@@ -22,9 +22,6 @@ import org.jlab.cnm.persistence.entity.TypeCode;
  */
 @WebServlet(name = "HtmlCodeList", urlPatterns = {"/export/cnd.html"})
 public class HtmlCodeList extends HttpServlet {
-
-    @EJB
-    ExcelCodeListFacade excelFacade;
     
     @EJB
     SystemCodeFacade systemFacade;

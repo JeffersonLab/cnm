@@ -9,7 +9,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title><c:out value="${title}"/></title>
-        <style type="text/css">
+        <style>
             table {
                 border-collapse: collapse;
                 border: 1px solid black;
@@ -17,6 +17,9 @@
             tr, td, th {
                 border: 1px solid black;
                 padding: 0.25em;
+            }
+            body {
+                margin: 1em;
             }
         </style>
     </head>
