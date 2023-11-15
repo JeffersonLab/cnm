@@ -34,7 +34,7 @@ jlab.addRow = function() {
         }
     });
 
-    request.error(function(xhr, textStatus) {
+    request.fail(function(xhr, textStatus) {
         window.console && console.log('Unable to add system; Text Status: ' + textStatus + ', Ready State: ' + xhr.readyState + ', HTTP Status Code: ' + xhr.status);
         alert('Unable to Save: Server unavailable or unresponsive');
     });
@@ -80,7 +80,7 @@ jlab.editRow = function() {
         }
     });
 
-    request.error(function(xhr, textStatus) {
+    request.fail(function(xhr, textStatus) {
         window.console && console.log('Unable to edit system; Text Status: ' + textStatus + ', Ready State: ' + xhr.readyState + ', HTTP Status Code: ' + xhr.status);
         alert('Unable to Save: Server unavailable or unresponsive');
     });
@@ -120,7 +120,7 @@ jlab.removeRow = function() {
         }
     });
 
-    request.error(function(xhr, textStatus) {
+    request.fail(function(xhr, textStatus) {
         window.console && console.log('Unable to remove system; Text Status: ' + textStatus + ', Ready State: ' + xhr.readyState + ', HTTP Status Code: ' + xhr.status);
         alert('Unable to Remove Server unavailable or unresponsive');
     });

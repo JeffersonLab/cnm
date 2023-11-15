@@ -50,7 +50,7 @@
                     }
                 });
 
-                request.error(function(xhr, textStatus) {
+                request.fail(function(xhr, textStatus) {
                     window.console && console.log('Unable to translate: Text Status: ' + textStatus + ', Ready State: ' + xhr.readyState + ', HTTP Status Code: ' + xhr.status);
                 });
 
