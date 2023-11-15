@@ -67,7 +67,7 @@
             <h2 id="page-header-title"><c:out value="${title}"/></h2>
             <div class="message-box"><c:out value="${selectionMessage}"/></div>
             <div id="chart-wrap" class="chart-wrap-backdrop">
-                <c:set var="readonly" value="${!pageContext.request.isUserInRole('cnmadm')}"/>
+                <c:set var="readonly" value="${!pageContext.request.isUserInRole('cnm-admin')}"/>
                 <s:editable-row-table-controls excludeAdd="${readonly}" excludeDelete="${readonly}" excludeEdit="${readonly}">
                     <button id="inventory-button" class="selected-row-action" type="button" disabled="disabled">CED Inventory</button>
                 </s:editable-row-table-controls>

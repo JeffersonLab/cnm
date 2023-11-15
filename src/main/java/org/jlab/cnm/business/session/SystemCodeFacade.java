@@ -74,7 +74,7 @@ public class SystemCodeFacade extends AbstractFacade<SystemCode> {
      * @throws UserFriendlyException Something was done that the user should see and can likely
      * correct
      */
-    @RolesAllowed("cnmadm")
+    @RolesAllowed("cnm-admin")
     public void addSystem(Character code, String description) throws EJBAccessException,
             RuntimeException, UserFriendlyException {
         if (code == null) {
@@ -119,14 +119,14 @@ public class SystemCodeFacade extends AbstractFacade<SystemCode> {
         return message;
     }
 
-    @RolesAllowed("cnmadm")
+    @RolesAllowed("cnm-admin")
     public void removeSystem(Character code) {
         SystemCode system = findByCode(code);
 
         em.remove(system);
     }
 
-    @RolesAllowed("cnmadm")
+    @RolesAllowed("cnm-admin")
     public void editSystem(BigInteger id, Character code, String description) throws UserFriendlyException {
         SystemCode system = find(id);
 

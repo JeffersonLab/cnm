@@ -145,7 +145,7 @@ public class TypeCodeFacade extends AbstractFacade<TypeCode> {
         return result;
     }
 
-    @RolesAllowed("cnmadm")
+    @RolesAllowed("cnm-admin")
     public void addType(Character scode, String vvcode, String description, String grouping) throws UserFriendlyException {
         if (scode == null) {
             throw new UserFriendlyException("System code must not be empty");
@@ -204,14 +204,14 @@ public class TypeCodeFacade extends AbstractFacade<TypeCode> {
         return message;
     }    
 
-    @RolesAllowed("cnmadm")
+    @RolesAllowed("cnm-admin")
     public void removeType(Character scode, String vvcode) {        
         TypeCode type = this.findByCode(scode, vvcode);
         
         em.remove(type);
     }
 
-    @RolesAllowed("cnmadm")
+    @RolesAllowed("cnm-admin")
     public void editType(BigInteger id, Character scode, String vvcode, String description, String grouping) throws UserFriendlyException {
         TypeCode type = find(id);
         SystemCode system = systemFacade.findByCode(scode);
@@ -236,7 +236,7 @@ public class TypeCodeFacade extends AbstractFacade<TypeCode> {
         }
     }
     
-    @RolesAllowed("cnmadm")
+    @RolesAllowed("cnm-admin")
     public void editAttributes(BigInteger id, String jsonAttributes) throws UserFriendlyException {
         TypeCode type = find(id);
         

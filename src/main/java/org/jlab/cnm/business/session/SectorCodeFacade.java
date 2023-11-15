@@ -59,7 +59,7 @@ public class SectorCodeFacade extends AbstractFacade<SectorCode> {
         return result;
     }
 
-    @RolesAllowed("cnmadm")
+    @RolesAllowed("cnm-admin")
     public void addSector(String code, String description, String grouping) throws UserFriendlyException {
         if (code == null || code.trim().isEmpty()) {
             throw new UserFriendlyException("System code must not be empty");
@@ -108,14 +108,14 @@ public class SectorCodeFacade extends AbstractFacade<SectorCode> {
         return message;
     }    
 
-    @RolesAllowed("cnmadm")
+    @RolesAllowed("cnm-admin")
     public void removeSector(String code) {
         SectorCode sector = findByCode(code);
         
         em.remove(sector);
     }
 
-    @RolesAllowed("cnmadm")
+    @RolesAllowed("cnm-admin")
     public void editSector(BigInteger id, String code, String description, String grouping) throws UserFriendlyException {
         SectorCode sector = find(id);
 
