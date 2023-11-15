@@ -11,6 +11,8 @@
         <script type="text/javascript" src="${pageContext.request.contextPath}/resources/v${initParam.releaseNumber}/js/help.js"></script>
     </jsp:attribute>            
     <jsp:body>
-        <s:help-panel title="${title}"></s:help-panel>
+        <s:help-panel title="${title}">
+
+        </s:help-panel>
     </jsp:body>         
 </t:page>
