@@ -3,7 +3,7 @@ plugins {
 }
 description = 'CEBAF Nomenclature Manager app'
 group 'org.jlab'
-version '2.8.0'
+version '2.8.1'
 ext.releaseDate = 'Jan 4 2024'
 tasks.withType(JavaCompile) {
     options.release = 11
