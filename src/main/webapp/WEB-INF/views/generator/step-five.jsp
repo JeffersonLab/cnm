@@ -33,7 +33,7 @@
 
             <p>The following names are already taken:</p>
             <ul></ul>
-            <a target="_blank" href="${env['CED_SERVER_URL']}/inventory/?q=${fn:escapeXml(system.getSCode())}${fn:escapeXml(type.getVvCode())}${fn:escapeXml(sector.getXxCode())}*">CED Inventory</a>
+            <a target="_blank" href="${env['CED_SERVER_URL']}/inventory?q=${fn:escapeXml(system.getSCode())}${fn:escapeXml(type.getVvCode())}${fn:escapeXml(sector.getXxCode())}*">CED Inventory</a>
             
             
             <p>Want to reserve your new element name?   <a href="mailto:cedadm@jlab.org?subject=Nomenclature">Contact the CED administrator</a></p>

@@ -395,7 +395,7 @@ $(document).on("click", "#open-edit-row-dialog-button", function () {
 $(document).on("click", "#inventory-button", function () {
     var scode = $(".editable-row-table tr.selected-row td:first-child").text(),
             vvcode = $(".editable-row-table tr.selected-row td:nth-child(2)").text();
-    window.open(jlab.cedServerUrl + "/inventory/?z=&t=LineElem&ng=" + scode + vvcode + "%25");
+    window.open(jlab.cedServerUrl + "/inventory?z=&t=LineElem&ng=" + scode + vvcode + "%25");
 });
 $(document).on("click", "#editable-attributes-button", function () {
     var $dialog = $("#editable-attributes-dialog"),

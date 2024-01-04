@@ -163,5 +163,5 @@ $(document).on("click", "#open-edit-row-dialog-button", function() {
 });
 $(document).on("click", "#inventory-button", function() {
     var code = $(".editable-row-table tr.selected-row td:first-child").text();
-    window.open(jlab.cedServerUrl + "/inventory/?z=&t=LineElem&ng=___" + code + "%25");
+    window.open(jlab.cedServerUrl + "/inventory?z=&t=LineElem&ng=___" + code + "%25");
 });
