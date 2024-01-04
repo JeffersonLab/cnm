@@ -46,3 +46,4 @@ services:
       CNM_CONTENT_CONTACT: 'bob@example.com'
       CNM_TECHNICAL_CONTACT: 'larry@example.com'
       CNM_DOC_CSV: 'https://github.com/JeffersonLab/cnm|CNM Home'
+      CED_SERVER_URL: 'https://cebaf.jlab.org/ced'
