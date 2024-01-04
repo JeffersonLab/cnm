@@ -64,7 +64,7 @@
             });
             $(document).on("click", "#ced-link", function() {
                 var query = $("#name-input").val();
-                window.open('https://ced.acc.jlab.org/inventory?q=' + encodeURIComponent(query) + '*');
+                window.open(jlab.cedServerUrl + '/inventory?q=' + encodeURIComponent(query) + '*');
                 return false;
             });
         </script>

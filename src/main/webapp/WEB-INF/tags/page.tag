@@ -13,11 +13,11 @@
         <jsp:invoke fragment="stylesheets"/>
     </jsp:attribute>
     <jsp:attribute name="scripts">
+        <script>
+            jlab.cedServerUrl = '${env["CED_SERVER_URL"]}';
+        </script>
         <script type="text/javascript" src="${pageContext.request.contextPath}/resources/v${initParam.releaseNumber}/js/cnm.js"></script>
         <jsp:invoke fragment="scripts"/>
-    </jsp:attribute>
-    <jsp:attribute name="footnote">
-        <b>Note:</b> The CED is only accessible from onsite
     </jsp:attribute>
     <jsp:attribute name="primaryNavigation">
                     <ul>
