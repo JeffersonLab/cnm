@@ -15,7 +15,7 @@ jobs:
   docker_publish:
     needs:
       - release
-    uses: jeffersonlab/container-workflows/.github/workflows/docker-publish.yml@main
+    uses: jeffersonlab/container-workflows/.github/workflows/docker-publish.yml@v1
     with:
       semvertag: ${{ needs.release.outputs.semvertag }}
     secrets: inherit
