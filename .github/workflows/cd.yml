@@ -27,5 +27,5 @@ jobs:
     with:
       app: cnm
       env: acctest
-      version: ${{ needs.release.outputs.semver }}
+      ver: ${{ needs.release.outputs.semver }}
     secrets: inherit
