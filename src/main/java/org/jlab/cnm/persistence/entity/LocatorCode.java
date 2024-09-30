@@ -17,123 +17,127 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 /**
- *
  * @author ryans
  */
 @Entity
-@Table(name = "LOCATOR_CODE", schema = "CNM_OWNER", uniqueConstraints
-        = {
-            @UniqueConstraint(columnNames = {"SECTOR_CODE_ID", "YY_CODE"})})
-@NamedQueries({
-    @NamedQuery(name = "LocatorCode.findAll", query = "SELECT l FROM LocatorCode l")})
+@Table(
+    name = "LOCATOR_CODE",
+    schema = "CNM_OWNER",
+    uniqueConstraints = {@UniqueConstraint(columnNames = {"SECTOR_CODE_ID", "YY_CODE"})})
+@NamedQueries({@NamedQuery(name = "LocatorCode.findAll", query = "SELECT l FROM LocatorCode l")})
 public class LocatorCode implements Serializable {
-    private static final long serialVersionUID = 1L;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 2)
-    @Column(name = "YY_CODE", nullable = false, length = 2)
-    private String yyCode;
-    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
-    @Id
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "LOCATOR_CODE_ID", nullable = false, precision = 22, scale = 0)
-    private BigDecimal locatorCodeId;
-    @Size(max = 512)
-    @Column(length = 512)
-    private String description;
-    @Basic(optional = true)
-    @Size(min = 1, max = 24)
-    @Column(nullable = true, length = 24)
-    private String state;
-    @Column(name = "PROPOSED_BY")
-    private BigInteger proposedBy;
-    @JoinColumn(name = "SECTOR_CODE_ID", referencedColumnName = "SECTOR_CODE_ID", nullable = false)
-    @ManyToOne(optional = false)
-    private SectorCode sectorCode;
+  private static final long serialVersionUID = 1L;
 
-    public LocatorCode() {
-    }
+  @Basic(optional = false)
+  @NotNull
+  @Size(min = 1, max = 2)
+  @Column(name = "YY_CODE", nullable = false, length = 2)
+  private String yyCode;
 
-    public LocatorCode(BigDecimal locatorCodeId) {
-        this.locatorCodeId = locatorCodeId;
-    }
+  // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these
+  // annotations to enforce field validation
+  @Id
+  @Basic(optional = false)
+  @NotNull
+  @Column(name = "LOCATOR_CODE_ID", nullable = false, precision = 22, scale = 0)
+  private BigDecimal locatorCodeId;
 
-    public LocatorCode(BigDecimal locatorCodeId, String yyCode, String state) {
-        this.locatorCodeId = locatorCodeId;
-        this.yyCode = yyCode;
-        this.state = state;
-    }
+  @Size(max = 512)
+  @Column(length = 512)
+  private String description;
 
-    public String getYyCode() {
-        return yyCode;
-    }
+  @Basic(optional = true)
+  @Size(min = 1, max = 24)
+  @Column(nullable = true, length = 24)
+  private String state;
 
-    public void setYyCode(String yyCode) {
-        this.yyCode = yyCode;
-    }
+  @Column(name = "PROPOSED_BY")
+  private BigInteger proposedBy;
 
-    public BigDecimal getLocatorCodeId() {
-        return locatorCodeId;
-    }
+  @JoinColumn(name = "SECTOR_CODE_ID", referencedColumnName = "SECTOR_CODE_ID", nullable = false)
+  @ManyToOne(optional = false)
+  private SectorCode sectorCode;
 
-    public void setLocatorCodeId(BigDecimal locatorCodeId) {
-        this.locatorCodeId = locatorCodeId;
-    }
+  public LocatorCode() {}
 
-    public String getDescription() {
-        return description;
-    }
+  public LocatorCode(BigDecimal locatorCodeId) {
+    this.locatorCodeId = locatorCodeId;
+  }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+  public LocatorCode(BigDecimal locatorCodeId, String yyCode, String state) {
+    this.locatorCodeId = locatorCodeId;
+    this.yyCode = yyCode;
+    this.state = state;
+  }
 
-    public String getState() {
-        return state;
-    }
+  public String getYyCode() {
+    return yyCode;
+  }
 
-    public void setState(String state) {
-        this.state = state;
-    }
+  public void setYyCode(String yyCode) {
+    this.yyCode = yyCode;
+  }
 
-    public BigInteger getProposedBy() {
-        return proposedBy;
-    }
+  public BigDecimal getLocatorCodeId() {
+    return locatorCodeId;
+  }
 
-    public void setProposedBy(BigInteger proposedBy) {
-        this.proposedBy = proposedBy;
-    }
+  public void setLocatorCodeId(BigDecimal locatorCodeId) {
+    this.locatorCodeId = locatorCodeId;
+  }
 
-    public SectorCode getSectorCode() {
-        return sectorCode;
-    }
+  public String getDescription() {
+    return description;
+  }
 
-    public void setSectorCode(SectorCode sectorCode) {
-        this.sectorCode = sectorCode;
-    }
+  public void setDescription(String description) {
+    this.description = description;
+  }
 
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (locatorCodeId != null ? locatorCodeId.hashCode() : 0);
-        return hash;
-    }
+  public String getState() {
+    return state;
+  }
 
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof LocatorCode)) {
-            return false;
-        }
-        LocatorCode other = (LocatorCode) object;
-        return (this.locatorCodeId != null || other.locatorCodeId == null) &&
-                (this.locatorCodeId == null || this.locatorCodeId.equals(other.locatorCodeId));
-    }
+  public void setState(String state) {
+    this.state = state;
+  }
 
-    @Override
-    public String toString() {
-        return "org.jlab.cnm.persistence.entity.LocatorCode[ locatorCodeId=" + locatorCodeId + " ]";
+  public BigInteger getProposedBy() {
+    return proposedBy;
+  }
+
+  public void setProposedBy(BigInteger proposedBy) {
+    this.proposedBy = proposedBy;
+  }
+
+  public SectorCode getSectorCode() {
+    return sectorCode;
+  }
+
+  public void setSectorCode(SectorCode sectorCode) {
+    this.sectorCode = sectorCode;
+  }
+
+  @Override
+  public int hashCode() {
+    int hash = 0;
+    hash += (locatorCodeId != null ? locatorCodeId.hashCode() : 0);
+    return hash;
+  }
+
+  @Override
+  public boolean equals(Object object) {
+    // TODO: Warning - this method won't work in the case the id fields are not set
+    if (!(object instanceof LocatorCode)) {
+      return false;
     }
-    
+    LocatorCode other = (LocatorCode) object;
+    return (this.locatorCodeId != null || other.locatorCodeId == null)
+        && (this.locatorCodeId == null || this.locatorCodeId.equals(other.locatorCodeId));
+  }
+
+  @Override
+  public String toString() {
+    return "org.jlab.cnm.persistence.entity.LocatorCode[ locatorCodeId=" + locatorCodeId + " ]";
+  }
 }

@@ -18,55 +18,53 @@ import org.jlab.smoothness.business.exception.UserFriendlyException;
 import org.jlab.smoothness.presentation.util.ParamConverter;
 
 /**
- *
  * @author ryans
  */
-@WebServlet(name = "AddType", urlPatterns = {"/ajax/add-type"})
+@WebServlet(
+    name = "AddType",
+    urlPatterns = {"/ajax/add-type"})
 public class AddType extends HttpServlet {
 
-    private static final Logger logger = Logger.getLogger(AddType.class.getName());
+  private static final Logger logger = Logger.getLogger(AddType.class.getName());
 
-    @EJB
-    TypeCodeFacade typeFacade;
-    
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+  @EJB TypeCodeFacade typeFacade;
 
-        Character scode = ParamConverter.convertCharacter(request, "scode");
-        String vvcode = request.getParameter("vvcode");
-        String description = request.getParameter("description");
-        String grouping = request.getParameter("grouping");
-        
-        String stat = "ok";
-        String error = null;
-        
-        try {
-            typeFacade.addType(scode, vvcode, description, grouping);
-        } catch(UserFriendlyException e) {
-            stat = "fail";
-            error = "Unable to add Type: " + e.getMessage();
-        } catch (EJBAccessException e) {
-            stat = "fail";
-            error = "Unable to add Type: Not authenticated / authorized (do you need to re-login?)";            
-        } catch(RuntimeException e) {
-            stat = "fail";
-            error = "Unable to add Type";
-            logger.log(Level.SEVERE, "Unable to add Type", e);
-        }
-        
-        response.setContentType("application/json");
+  @Override
+  protected void doPost(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException {
 
-        OutputStream out = response.getOutputStream();
-        
-        try (JsonGenerator gen = Json.createGenerator(out)) {
-            gen.writeStartObject()
-                    .write("stat", stat);
-            if(error != null) {
-                gen.write("error", error);
-            }
-            gen.writeEnd();
-        }
+    Character scode = ParamConverter.convertCharacter(request, "scode");
+    String vvcode = request.getParameter("vvcode");
+    String description = request.getParameter("description");
+    String grouping = request.getParameter("grouping");
+
+    String stat = "ok";
+    String error = null;
+
+    try {
+      typeFacade.addType(scode, vvcode, description, grouping);
+    } catch (UserFriendlyException e) {
+      stat = "fail";
+      error = "Unable to add Type: " + e.getMessage();
+    } catch (EJBAccessException e) {
+      stat = "fail";
+      error = "Unable to add Type: Not authenticated / authorized (do you need to re-login?)";
+    } catch (RuntimeException e) {
+      stat = "fail";
+      error = "Unable to add Type";
+      logger.log(Level.SEVERE, "Unable to add Type", e);
     }
 
+    response.setContentType("application/json");
+
+    OutputStream out = response.getOutputStream();
+
+    try (JsonGenerator gen = Json.createGenerator(out)) {
+      gen.writeStartObject().write("stat", stat);
+      if (error != null) {
+        gen.write("error", error);
+      }
+      gen.writeEnd();
+    }
+  }
 }
