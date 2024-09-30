@@ -169,7 +169,7 @@ jlab.filterGroupingBySystem = function (sCode) {
             $select.empty();
             $select.append('<option></option>');
             $(json.options).each(function () {
-                $select.append('<option value="' + this.value + '">' + this.name + '</option>');
+                $select.append('<option value="' + String(this.value).encodeXml() + '">' + String(this.name).encodeXml() + '</option>');
             });
 
             if ($(json.optionList).length === 1) {
