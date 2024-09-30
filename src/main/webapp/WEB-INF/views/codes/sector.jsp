@@ -43,7 +43,7 @@
                                 <li>
                                     <div class="li-key"><label for="sector" class="key-label">Sector</label></div>
                                     <div class="li-value">
-                                        <input type="text" name="sector" id="sector" maxlength="2" value="${param.sector}"/>
+                                        <input type="text" name="sector" id="sector" maxlength="2" value="${fn:escapeXml(param.sector)}"/>
                                         (use % as a wildcard)
                                     </div>
                                 </li>                                
