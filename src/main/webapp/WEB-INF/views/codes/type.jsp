@@ -34,7 +34,7 @@
                                 <li>
                                     <div class="li-key"><label for="type" class="key-label">Type</label></div>
                                     <div class="li-value">
-                                        <input type="text" name="type" id="type" maxlength="2" value="${param.type}"/>
+                                        <input type="text" name="type" id="type" maxlength="2" value="${fn:escapeXml(param.type)}"/>
                                         (use % as a wildcard)
                                     </div>
                                 </li>                                
