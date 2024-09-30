@@ -19,120 +19,124 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 /**
- *
  * @author ryans
  */
 @Entity
 @Table(name = "SECTOR_CODE", schema = "CNM_OWNER")
-@NamedQueries({
-    @NamedQuery(name = "SectorCode.findAll", query = "SELECT s FROM SectorCode s")})
+@NamedQueries({@NamedQuery(name = "SectorCode.findAll", query = "SELECT s FROM SectorCode s")})
 public class SectorCode implements Serializable {
-    private static final long serialVersionUID = 1L;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 2)
-    @Column(name = "XX_CODE", nullable = false, length = 2)
-    private String xxCode;
-    @Size(max = 512)
-    @Column(length = 512)
-    private String description;
-    @Id
-    @SequenceGenerator(name = "SectorId", sequenceName = "SECTOR_ID", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SectorId")     
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "SECTOR_CODE_ID", nullable = false, precision = 22, scale = 0)
-    private BigInteger sectorCodeId;
-    @Basic(optional = true)
-    @Size(min = 1, max = 16)
-    @Column(nullable = true, length = 16)
-    private String grouping;    
-    @Basic(optional = true)
-    @Size(min = 1, max = 24)
-    @Column(nullable = true, length = 24)
-    private String state;
-    @Column(name = "PROPOSED_BY")
-    private BigInteger proposedBy;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "sectorCode")
-    private List<LocatorCode> locatorCodeList;
+  private static final long serialVersionUID = 1L;
 
-    public String getXxCode() {
-        return xxCode;
-    }
+  @Basic(optional = false)
+  @NotNull
+  @Size(min = 1, max = 2)
+  @Column(name = "XX_CODE", nullable = false, length = 2)
+  private String xxCode;
 
-    public void setXxCode(String xxCode) {
-        this.xxCode = xxCode;
-    }
+  @Size(max = 512)
+  @Column(length = 512)
+  private String description;
 
-    public String getDescription() {
-        return description;
-    }
+  @Id
+  @SequenceGenerator(name = "SectorId", sequenceName = "SECTOR_ID", allocationSize = 1)
+  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SectorId")
+  @Basic(optional = false)
+  @NotNull
+  @Column(name = "SECTOR_CODE_ID", nullable = false, precision = 22, scale = 0)
+  private BigInteger sectorCodeId;
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+  @Basic(optional = true)
+  @Size(min = 1, max = 16)
+  @Column(nullable = true, length = 16)
+  private String grouping;
 
-    public BigInteger getSectorCodeId() {
-        return sectorCodeId;
-    }
+  @Basic(optional = true)
+  @Size(min = 1, max = 24)
+  @Column(nullable = true, length = 24)
+  private String state;
 
-    public void setSectorCodeId(BigInteger sectorCodeId) {
-        this.sectorCodeId = sectorCodeId;
-    }
+  @Column(name = "PROPOSED_BY")
+  private BigInteger proposedBy;
 
-    public String getGrouping() {
-        return grouping;
-    }
+  @OneToMany(cascade = CascadeType.ALL, mappedBy = "sectorCode")
+  private List<LocatorCode> locatorCodeList;
 
-    public void setGrouping(String grouping) {
-        this.grouping = grouping;
-    }
+  public String getXxCode() {
+    return xxCode;
+  }
 
-    public String getState() {
-        return state;
-    }
+  public void setXxCode(String xxCode) {
+    this.xxCode = xxCode;
+  }
 
-    public void setState(String state) {
-        this.state = state;
-    }
+  public String getDescription() {
+    return description;
+  }
 
-    public BigInteger getProposedBy() {
-        return proposedBy;
-    }
+  public void setDescription(String description) {
+    this.description = description;
+  }
 
-    public void setProposedBy(BigInteger proposedBy) {
-        this.proposedBy = proposedBy;
-    }
+  public BigInteger getSectorCodeId() {
+    return sectorCodeId;
+  }
 
-    public List<LocatorCode> getLocatorCodeList() {
-        return locatorCodeList;
-    }
+  public void setSectorCodeId(BigInteger sectorCodeId) {
+    this.sectorCodeId = sectorCodeId;
+  }
 
-    public void setLocatorCodeList(List<LocatorCode> locatorCodeList) {
-        this.locatorCodeList = locatorCodeList;
-    }
+  public String getGrouping() {
+    return grouping;
+  }
 
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (sectorCodeId != null ? sectorCodeId.hashCode() : 0);
-        return hash;
-    }
+  public void setGrouping(String grouping) {
+    this.grouping = grouping;
+  }
 
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof SectorCode)) {
-            return false;
-        }
-        SectorCode other = (SectorCode) object;
-        return (this.sectorCodeId != null || other.sectorCodeId == null) &&
-                (this.sectorCodeId == null || this.sectorCodeId.equals(other.sectorCodeId));
-    }
+  public String getState() {
+    return state;
+  }
 
-    @Override
-    public String toString() {
-        return "org.jlab.cnm.persistence.entity.SectorCode[ sectorCodeId=" + sectorCodeId + " ]";
+  public void setState(String state) {
+    this.state = state;
+  }
+
+  public BigInteger getProposedBy() {
+    return proposedBy;
+  }
+
+  public void setProposedBy(BigInteger proposedBy) {
+    this.proposedBy = proposedBy;
+  }
+
+  public List<LocatorCode> getLocatorCodeList() {
+    return locatorCodeList;
+  }
+
+  public void setLocatorCodeList(List<LocatorCode> locatorCodeList) {
+    this.locatorCodeList = locatorCodeList;
+  }
+
+  @Override
+  public int hashCode() {
+    int hash = 0;
+    hash += (sectorCodeId != null ? sectorCodeId.hashCode() : 0);
+    return hash;
+  }
+
+  @Override
+  public boolean equals(Object object) {
+    // TODO: Warning - this method won't work in the case the id fields are not set
+    if (!(object instanceof SectorCode)) {
+      return false;
     }
-    
+    SectorCode other = (SectorCode) object;
+    return (this.sectorCodeId != null || other.sectorCodeId == null)
+        && (this.sectorCodeId == null || this.sectorCodeId.equals(other.sectorCodeId));
+  }
+
+  @Override
+  public String toString() {
+    return "org.jlab.cnm.persistence.entity.SectorCode[ sectorCodeId=" + sectorCodeId + " ]";
+  }
 }

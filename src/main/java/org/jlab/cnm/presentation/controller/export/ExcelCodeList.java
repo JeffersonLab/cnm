@@ -17,43 +17,40 @@ import org.jlab.cnm.persistence.entity.SystemCode;
 import org.jlab.cnm.persistence.entity.TypeCode;
 
 /**
- *
  * @author ryans
  */
-@WebServlet(name = "ExcelCodeList", urlPatterns = {"/export/cnd.xlsx"})
+@WebServlet(
+    name = "ExcelCodeList",
+    urlPatterns = {"/export/cnd.xlsx"})
 public class ExcelCodeList extends HttpServlet {
 
-    @EJB
-    ExcelCodeListFacade excelFacade;
-    
-    @EJB
-    SystemCodeFacade systemFacade;
-    
-    @EJB
-    TypeCodeFacade typeFacade;
-    
-    @EJB
-    SectorCodeFacade sectorFacade;
-    
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {   
+  @EJB ExcelCodeListFacade excelFacade;
 
-        List<SystemCode> systemList = systemFacade.findAll();
-        List<TypeCode> typeList = typeFacade.filterList(null, null, null, 0, Integer.MAX_VALUE);
-        List<SectorCode> sectorList = sectorFacade.filterList(null, null, 0, Integer.MAX_VALUE);
-        
-        response.setContentType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
-        response.setHeader("content-disposition", "attachment;filename=\"cnd.xlsx\"");
+  @EJB SystemCodeFacade systemFacade;
 
-        excelFacade.export(response.getOutputStream(), systemList, typeList, sectorList);
-    }
+  @EJB TypeCodeFacade typeFacade;
+
+  @EJB SectorCodeFacade sectorFacade;
+
+  /**
+   * Handles the HTTP <code>GET</code> method.
+   *
+   * @param request servlet request
+   * @param response servlet response
+   * @throws ServletException if a servlet-specific error occurs
+   * @throws IOException if an I/O error occurs
+   */
+  @Override
+  protected void doGet(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException {
+
+    List<SystemCode> systemList = systemFacade.findAll();
+    List<TypeCode> typeList = typeFacade.filterList(null, null, null, 0, Integer.MAX_VALUE);
+    List<SectorCode> sectorList = sectorFacade.filterList(null, null, 0, Integer.MAX_VALUE);
+
+    response.setContentType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+    response.setHeader("content-disposition", "attachment;filename=\"cnd.xlsx\"");
+
+    excelFacade.export(response.getOutputStream(), systemList, typeList, sectorList);
+  }
 }

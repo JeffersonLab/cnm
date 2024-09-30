@@ -19,54 +19,52 @@ import org.jlab.smoothness.business.exception.UserFriendlyException;
 import org.jlab.smoothness.presentation.util.ParamConverter;
 
 /**
- *
  * @author ryans
  */
-@WebServlet(name = "EditSystem", urlPatterns = {"/ajax/edit-system"})
+@WebServlet(
+    name = "EditSystem",
+    urlPatterns = {"/ajax/edit-system"})
 public class EditSystem extends HttpServlet {
 
-    private static final Logger logger = Logger.getLogger(EditSystem.class.getName());
+  private static final Logger logger = Logger.getLogger(EditSystem.class.getName());
 
-    @EJB
-    SystemCodeFacade systemFacade;
-    
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+  @EJB SystemCodeFacade systemFacade;
 
-        BigInteger id = ParamConverter.convertBigInteger(request, "id");
-        Character code = ParamConverter.convertCharacter(request, "code");
-        String description = request.getParameter("description");
-        
-        String stat = "ok";
-        String error = null;
-        
-        try {
-            systemFacade.editSystem(id, code, description);            
-        } catch(UserFriendlyException e) {
-            stat = "fail";
-            error = "Unable to edit System: " + e.getMessage();
-        } catch (EJBAccessException e) {
-            stat = "fail";
-            error = "Unable to edit System: Not authenticated / authorized (do you need to re-login?)";
-        } catch(RuntimeException e) {
-            stat = "fail";
-            error = "Unable to edit System";
-            logger.log(Level.SEVERE, "Unable to edit System", e);
-        }
-        
-        response.setContentType("application/json");
+  @Override
+  protected void doPost(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException {
 
-        OutputStream out = response.getOutputStream();
-        
-        try (JsonGenerator gen = Json.createGenerator(out)) {
-            gen.writeStartObject()
-                    .write("stat", stat);
-            if(error != null) {
-                gen.write("error", error);
-            }
-            gen.writeEnd();
-        }
+    BigInteger id = ParamConverter.convertBigInteger(request, "id");
+    Character code = ParamConverter.convertCharacter(request, "code");
+    String description = request.getParameter("description");
+
+    String stat = "ok";
+    String error = null;
+
+    try {
+      systemFacade.editSystem(id, code, description);
+    } catch (UserFriendlyException e) {
+      stat = "fail";
+      error = "Unable to edit System: " + e.getMessage();
+    } catch (EJBAccessException e) {
+      stat = "fail";
+      error = "Unable to edit System: Not authenticated / authorized (do you need to re-login?)";
+    } catch (RuntimeException e) {
+      stat = "fail";
+      error = "Unable to edit System";
+      logger.log(Level.SEVERE, "Unable to edit System", e);
     }
 
+    response.setContentType("application/json");
+
+    OutputStream out = response.getOutputStream();
+
+    try (JsonGenerator gen = Json.createGenerator(out)) {
+      gen.writeStartObject().write("stat", stat);
+      if (error != null) {
+        gen.write("error", error);
+      }
+      gen.writeEnd();
+    }
+  }
 }

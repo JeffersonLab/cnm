@@ -19,53 +19,52 @@ import org.jlab.smoothness.business.exception.UserFriendlyException;
 import org.jlab.smoothness.presentation.util.ParamConverter;
 
 /**
- *
  * @author ryans
  */
-@WebServlet(name = "EditAttributes", urlPatterns = {"/ajax/edit-attributes"})
+@WebServlet(
+    name = "EditAttributes",
+    urlPatterns = {"/ajax/edit-attributes"})
 public class EditAttributes extends HttpServlet {
 
-    private static final Logger logger = Logger.getLogger(EditAttributes.class.getName());
+  private static final Logger logger = Logger.getLogger(EditAttributes.class.getName());
 
-    @EJB
-    TypeCodeFacade typeFacade;
-    
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+  @EJB TypeCodeFacade typeFacade;
 
-        BigInteger id = ParamConverter.convertBigInteger(request, "id");
-        String jsonAttributes = request.getParameter("attributes");
-        
-        String stat = "ok";
-        String error = null;
-        
-        try {
-            typeFacade.editAttributes(id, jsonAttributes);            
-        } catch(UserFriendlyException e) {
-            stat = "fail";
-            error = "Unable to edit attributes: " + e.getMessage();
-        } catch (EJBAccessException e) {
-            stat = "fail";
-            error = "Unable to edit attributes: Not authenticated / authorized (do you need to re-login?)";
-        } catch(RuntimeException e) {
-            stat = "fail";
-            error = "Unable to edit attributes";
-            logger.log(Level.SEVERE, "Unable to edit attributes", e);
-        }
-        
-        response.setContentType("application/json");
+  @Override
+  protected void doPost(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException {
 
-        OutputStream out = response.getOutputStream();
-        
-        try (JsonGenerator gen = Json.createGenerator(out)) {
-            gen.writeStartObject()
-                    .write("stat", stat);
-            if(error != null) {
-                gen.write("error", error);
-            }
-            gen.writeEnd();
-        }
+    BigInteger id = ParamConverter.convertBigInteger(request, "id");
+    String jsonAttributes = request.getParameter("attributes");
+
+    String stat = "ok";
+    String error = null;
+
+    try {
+      typeFacade.editAttributes(id, jsonAttributes);
+    } catch (UserFriendlyException e) {
+      stat = "fail";
+      error = "Unable to edit attributes: " + e.getMessage();
+    } catch (EJBAccessException e) {
+      stat = "fail";
+      error =
+          "Unable to edit attributes: Not authenticated / authorized (do you need to re-login?)";
+    } catch (RuntimeException e) {
+      stat = "fail";
+      error = "Unable to edit attributes";
+      logger.log(Level.SEVERE, "Unable to edit attributes", e);
     }
 
+    response.setContentType("application/json");
+
+    OutputStream out = response.getOutputStream();
+
+    try (JsonGenerator gen = Json.createGenerator(out)) {
+      gen.writeStartObject().write("stat", stat);
+      if (error != null) {
+        gen.write("error", error);
+      }
+      gen.writeEnd();
+    }
+  }
 }

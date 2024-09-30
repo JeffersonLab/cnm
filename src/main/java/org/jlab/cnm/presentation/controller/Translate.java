@@ -15,35 +15,32 @@ import org.jlab.cnm.business.session.TranslatorService;
 import org.jlab.smoothness.business.util.ObjectUtil;
 
 /**
- *
  * @author ryans
  */
-@WebServlet(name = "Translate", urlPatterns = {"/translate"})
+@WebServlet(
+    name = "Translate",
+    urlPatterns = {"/translate"})
 public class Translate extends HttpServlet {
 
-    private static final Logger logger = Logger.getLogger(
-            Translate.class.getName());
+  private static final Logger logger = Logger.getLogger(Translate.class.getName());
 
-    @EJB
-    TranslatorService translator;
-    
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+  @EJB TranslatorService translator;
 
-        String query = request.getParameter("q");
-        
-        String meaning = translator.translate(query);
-        
-        response.setContentType("application/json");
+  @Override
+  protected void doGet(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException {
 
-        OutputStream out = response.getOutputStream();
+    String query = request.getParameter("q");
 
-        try (JsonGenerator gen = Json.createGenerator(out)) {
-            gen.writeStartObject()
-                    .write("meaning", ObjectUtil.coalesce(meaning, ""));
-            gen.writeEnd();
-        }
+    String meaning = translator.translate(query);
+
+    response.setContentType("application/json");
+
+    OutputStream out = response.getOutputStream();
+
+    try (JsonGenerator gen = Json.createGenerator(out)) {
+      gen.writeStartObject().write("meaning", ObjectUtil.coalesce(meaning, ""));
+      gen.writeEnd();
     }
-
+  }
 }
