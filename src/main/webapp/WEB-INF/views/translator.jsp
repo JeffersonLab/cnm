@@ -31,7 +31,7 @@
             jlab.translate = function() {
                 var query = $("#name-input").val();
 
-                history.replaceState(null, null, "translator?name=" + encodeURIComponent(query));
+                history.replaceState(null, null, "/cnm/translator/" + encodeURIComponent(query));
 
                 $("#meaning").text("").addClass("button-indicator");
 
