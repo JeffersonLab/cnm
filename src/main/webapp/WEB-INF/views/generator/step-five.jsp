@@ -10,7 +10,7 @@
     <jsp:attribute name="scripts">        
     </jsp:attribute>        
     <jsp:body>
-        <div class="breadbox">
+        <div class="banner-breadbox">
             <ul class="breadcrumb">
                 <li>
                     <a href="${pageContext.request.contextPath}/generator/step-one"><c:out value="${system.getSCode()}"/></a>
