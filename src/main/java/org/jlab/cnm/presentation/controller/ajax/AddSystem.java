@@ -33,17 +33,17 @@ public class AddSystem extends HttpServlet {
   protected void doPost(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
 
-    Character code = ParamConverter.convertCharacter(request, "code");
-    String description = request.getParameter("description");
-
     String stat = "ok";
     String error = null;
 
     try {
+      Character code = ParamConverter.convertCharacter(request, "code");
+      String description = request.getParameter("description");
+
       systemFacade.addSystem(code, description);
     } catch (UserFriendlyException e) {
       stat = "fail";
-      error = "Unable to add System: " + e.getMessage();
+      error = "Unable to add System: " + e.getUserMessage();
     } catch (EJBAccessException e) {
       stat = "fail";
       error = "Unable to add System: Not authenticated / authorized (do you need to re-login?)";

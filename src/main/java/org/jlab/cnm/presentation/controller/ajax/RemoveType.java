@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.jlab.cnm.business.session.TypeCodeFacade;
+import org.jlab.smoothness.business.exception.UserFriendlyException;
 import org.jlab.smoothness.presentation.util.ParamConverter;
 
 /**
@@ -32,14 +33,17 @@ public class RemoveType extends HttpServlet {
   protected void doPost(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
 
-    Character scode = ParamConverter.convertCharacter(request, "scode");
-    String vvcode = request.getParameter("vvcode");
-
     String stat = "ok";
     String error = null;
 
     try {
+      Character scode = ParamConverter.convertCharacter(request, "scode");
+      String vvcode = request.getParameter("vvcode");
+
       typeFacade.removeType(scode, vvcode);
+    } catch (UserFriendlyException e) {
+      stat = "fail";
+      error = "Unable to edit Type: " + e.getUserMessage();
     } catch (EJBAccessException e) {
       stat = "fail";
       error = "Unable to remove Type: Not authenticated / authorized (do you need to re-login?)";

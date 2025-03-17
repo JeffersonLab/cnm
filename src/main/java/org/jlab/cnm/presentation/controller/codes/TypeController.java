@@ -40,59 +40,63 @@ public class TypeController extends HttpServlet {
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
 
-    int offset = ParamUtil.convertAndValidateNonNegativeInt(request, "offset", 0);
-    int max = ParamUtil.convertAndValidateNonNegativeInt(request, "max", Integer.MAX_VALUE);
-    Character sCode = ParamConverter.convertCharacter(request, "system");
-    String vvCode = request.getParameter("type");
-    String grouping = request.getParameter("grouping");
+    try {
+      int offset = ParamUtil.convertAndValidateNonNegativeInt(request, "offset", 0);
+      int max = ParamUtil.convertAndValidateNonNegativeInt(request, "max", Integer.MAX_VALUE);
+      Character sCode = ParamConverter.convertCharacter(request, "system");
+      String vvCode = request.getParameter("type");
+      String grouping = request.getParameter("grouping");
 
-    List<TypeCode> typeList = typeFacade.filterList(sCode, vvCode, grouping, offset, max);
-    long totalRecords = typeFacade.countList(sCode, vvCode, grouping);
+      List<TypeCode> typeList = typeFacade.filterList(sCode, vvCode, grouping, offset, max);
+      long totalRecords = typeFacade.countList(sCode, vvCode, grouping);
 
-    List<String> groupingList = typeFacade.findGroupingList(sCode);
+      List<String> groupingList = typeFacade.findGroupingList(sCode);
 
-    request.setAttribute("groupingList", groupingList);
+      request.setAttribute("groupingList", groupingList);
 
-    DecimalFormat formatter = new DecimalFormat("###,###");
+      DecimalFormat formatter = new DecimalFormat("###,###");
 
-    String selectionMessage = "All Type Codes ";
+      String selectionMessage = "All Type Codes ";
 
-    String typeStr = "";
+      String typeStr = "";
 
-    if (vvCode != null) {
-      typeStr = vvCode;
-    }
-
-    String systemStr = "";
-
-    if (sCode != null) {
-      SystemCode system = systemFacade.findByCode(sCode);
-
-      systemStr = "Unknown System";
-
-      if (system != null) {
-        systemStr = system.getDescription();
+      if (vvCode != null) {
+        typeStr = vvCode;
       }
+
+      String systemStr = "";
+
+      if (sCode != null) {
+        SystemCode system = systemFacade.findByCode(sCode);
+
+        systemStr = "Unknown System";
+
+        if (system != null) {
+          systemStr = system.getDescription();
+        }
+      }
+
+      if (typeStr != null || sCode != null) {
+        selectionMessage = systemStr + " " + typeStr + " Type Codes ";
+      }
+
+      if (grouping != null && !grouping.trim().isEmpty()) {
+        selectionMessage = selectionMessage + "[" + grouping + "] ";
+      }
+
+      selectionMessage = selectionMessage + "{" + formatter.format(totalRecords) + "}";
+
+      request.setAttribute("selectionMessage", selectionMessage);
+
+      request.setAttribute("typeList", typeList);
+
+      List<SystemCode> systemList = systemFacade.findAll();
+
+      request.setAttribute("systemList", systemList);
+
+      request.getRequestDispatcher("/WEB-INF/views/codes/type.jsp").forward(request, response);
+    } catch (Exception e) {
+      throw new RuntimeException(e);
     }
-
-    if (typeStr != null || sCode != null) {
-      selectionMessage = systemStr + " " + typeStr + " Type Codes ";
-    }
-
-    if (grouping != null && !grouping.trim().isEmpty()) {
-      selectionMessage = selectionMessage + "[" + grouping + "] ";
-    }
-
-    selectionMessage = selectionMessage + "{" + formatter.format(totalRecords) + "}";
-
-    request.setAttribute("selectionMessage", selectionMessage);
-
-    request.setAttribute("typeList", typeList);
-
-    List<SystemCode> systemList = systemFacade.findAll();
-
-    request.setAttribute("systemList", systemList);
-
-    request.getRequestDispatcher("/WEB-INF/views/codes/type.jsp").forward(request, response);
   }
 }

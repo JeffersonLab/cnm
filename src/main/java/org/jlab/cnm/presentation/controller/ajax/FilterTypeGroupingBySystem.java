@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.jlab.cnm.business.session.TypeCodeFacade;
+import org.jlab.smoothness.business.exception.UserFriendlyException;
 import org.jlab.smoothness.presentation.util.ParamConverter;
 
 /**
@@ -32,15 +33,17 @@ public class FilterTypeGroupingBySystem extends HttpServlet {
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
 
-    Character code = ParamConverter.convertCharacter(request, "code");
-
     String stat = "ok";
     String error = null;
-
     List<String> groupingList = null;
 
     try {
+      Character code = ParamConverter.convertCharacter(request, "code");
+
       groupingList = typeFacade.findGroupingList(code);
+    } catch (UserFriendlyException e) {
+      stat = "fail";
+      error = "Unable to edit Type: " + e.getUserMessage();
     } catch (RuntimeException e) {
       stat = "fail";
       error = "Unable to filter grouping list";

@@ -38,24 +38,28 @@ public class StepTwo extends HttpServlet {
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
 
-    Character systemCode = ParamConverter.convertCharacter(request, "system");
-    String grouping = request.getParameter("grouping");
+    try {
+      Character systemCode = ParamConverter.convertCharacter(request, "system");
+      String grouping = request.getParameter("grouping");
 
-    SystemCode system = systemFacade.findByCode(systemCode);
+      SystemCode system = systemFacade.findByCode(systemCode);
 
-    request.setAttribute("system", system);
+      request.setAttribute("system", system);
 
-    List<TypeCode> typeList =
-        typeFacade.filterList(systemCode, null, grouping, 0, Integer.MAX_VALUE);
+      List<TypeCode> typeList =
+          typeFacade.filterList(systemCode, null, grouping, 0, Integer.MAX_VALUE);
 
-    request.setAttribute("typeList", typeList);
+      request.setAttribute("typeList", typeList);
 
-    List<String> groupingList = typeFacade.findGroupingList(systemCode);
+      List<String> groupingList = typeFacade.findGroupingList(systemCode);
 
-    request.setAttribute("groupingList", groupingList);
+      request.setAttribute("groupingList", groupingList);
 
-    request
-        .getRequestDispatcher("/WEB-INF/views/generator/step-two.jsp")
-        .forward(request, response);
+      request
+          .getRequestDispatcher("/WEB-INF/views/generator/step-two.jsp")
+          .forward(request, response);
+    } catch (Exception e) {
+      throw new ServletException(e);
+    }
   }
 }
