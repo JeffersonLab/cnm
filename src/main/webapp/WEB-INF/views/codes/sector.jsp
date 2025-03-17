@@ -35,7 +35,7 @@
     <jsp:body>
         <section>    
             <s:filter-flyout-widget clearButton="true">
-                <form id="filter-form" method="get" action="sector">
+                <form class="filter-form" method="get" action="sector">
                     <div id="filter-form-panel">
                         <fieldset>
                             <legend>Filter</legend>
