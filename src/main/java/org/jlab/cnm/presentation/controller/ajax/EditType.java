@@ -34,20 +34,20 @@ public class EditType extends HttpServlet {
   protected void doPost(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
 
-    BigInteger id = ParamConverter.convertBigInteger(request, "id");
-    Character scode = ParamConverter.convertCharacter(request, "scode");
-    String vvcode = request.getParameter("vvcode");
-    String description = request.getParameter("description");
-    String grouping = request.getParameter("grouping");
-
     String stat = "ok";
     String error = null;
 
     try {
+      BigInteger id = ParamConverter.convertBigInteger(request, "id");
+      Character scode = ParamConverter.convertCharacter(request, "scode");
+      String vvcode = request.getParameter("vvcode");
+      String description = request.getParameter("description");
+      String grouping = request.getParameter("grouping");
+
       typeFacade.editType(id, scode, vvcode, description, grouping);
     } catch (UserFriendlyException e) {
       stat = "fail";
-      error = "Unable to edit Type: " + e.getMessage();
+      error = "Unable to edit Type: " + e.getUserMessage();
     } catch (EJBAccessException e) {
       stat = "fail";
       error = "Unable to edit Type: Not authenticated / authorized (do you need to re-login?)";

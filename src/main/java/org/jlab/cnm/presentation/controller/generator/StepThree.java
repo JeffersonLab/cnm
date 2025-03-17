@@ -41,30 +41,34 @@ public class StepThree extends HttpServlet {
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-    Character systemCode = ParamConverter.convertCharacter(request, "system");
+    try {
+      Character systemCode = ParamConverter.convertCharacter(request, "system");
 
-    SystemCode system = systemFacade.findByCode(systemCode);
+      SystemCode system = systemFacade.findByCode(systemCode);
 
-    request.setAttribute("system", system);
+      request.setAttribute("system", system);
 
-    String typeCode = request.getParameter("type");
+      String typeCode = request.getParameter("type");
 
-    TypeCode type = typeFacade.findByCode(system.getSCode(), typeCode);
+      TypeCode type = typeFacade.findByCode(system.getSCode(), typeCode);
 
-    request.setAttribute("type", type);
+      request.setAttribute("type", type);
 
-    String grouping = request.getParameter("grouping");
+      String grouping = request.getParameter("grouping");
 
-    List<SectorCode> sectorList = sectorFacade.filterList(null, grouping, 0, Integer.MAX_VALUE);
+      List<SectorCode> sectorList = sectorFacade.filterList(null, grouping, 0, Integer.MAX_VALUE);
 
-    request.setAttribute("sectorList", sectorList);
+      request.setAttribute("sectorList", sectorList);
 
-    List<String> groupingList = sectorFacade.findGroupingList();
+      List<String> groupingList = sectorFacade.findGroupingList();
 
-    request.setAttribute("groupingList", groupingList);
+      request.setAttribute("groupingList", groupingList);
 
-    request
-        .getRequestDispatcher("/WEB-INF/views/generator/step-three.jsp")
-        .forward(request, response);
+      request
+          .getRequestDispatcher("/WEB-INF/views/generator/step-three.jsp")
+          .forward(request, response);
+    } catch (Exception e) {
+      throw new ServletException(e);
+    }
   }
 }

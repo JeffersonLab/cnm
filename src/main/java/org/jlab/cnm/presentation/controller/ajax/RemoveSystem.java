@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.jlab.cnm.business.session.SystemCodeFacade;
+import org.jlab.smoothness.business.exception.UserFriendlyException;
 import org.jlab.smoothness.presentation.util.ParamConverter;
 
 /**
@@ -32,13 +33,16 @@ public class RemoveSystem extends HttpServlet {
   protected void doPost(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
 
-    Character code = ParamConverter.convertCharacter(request, "code");
-
     String stat = "ok";
     String error = null;
 
     try {
+      Character code = ParamConverter.convertCharacter(request, "code");
+
       systemFacade.removeSystem(code);
+    } catch (UserFriendlyException e) {
+      stat = "fail";
+      error = "Unable to edit Type: " + e.getUserMessage();
     } catch (EJBAccessException e) {
       stat = "fail";
       error = "Unable to remove System: Not authenticated / authorized (do you need to re-login?)";

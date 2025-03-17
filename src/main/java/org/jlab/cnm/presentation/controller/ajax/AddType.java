@@ -33,19 +33,19 @@ public class AddType extends HttpServlet {
   protected void doPost(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
 
-    Character scode = ParamConverter.convertCharacter(request, "scode");
-    String vvcode = request.getParameter("vvcode");
-    String description = request.getParameter("description");
-    String grouping = request.getParameter("grouping");
-
     String stat = "ok";
     String error = null;
 
     try {
+      Character scode = ParamConverter.convertCharacter(request, "scode");
+      String vvcode = request.getParameter("vvcode");
+      String description = request.getParameter("description");
+      String grouping = request.getParameter("grouping");
+
       typeFacade.addType(scode, vvcode, description, grouping);
     } catch (UserFriendlyException e) {
       stat = "fail";
-      error = "Unable to add Type: " + e.getMessage();
+      error = "Unable to add Type: " + e.getUserMessage();
     } catch (EJBAccessException e) {
       stat = "fail";
       error = "Unable to add Type: Not authenticated / authorized (do you need to re-login?)";

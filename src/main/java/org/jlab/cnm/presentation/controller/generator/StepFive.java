@@ -44,32 +44,36 @@ public class StepFive extends HttpServlet {
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-    Character systemCode = ParamConverter.convertCharacter(request, "system");
+    try {
+      Character systemCode = ParamConverter.convertCharacter(request, "system");
 
-    SystemCode system = systemFacade.findByCode(systemCode);
+      SystemCode system = systemFacade.findByCode(systemCode);
 
-    request.setAttribute("system", system);
+      request.setAttribute("system", system);
 
-    String typeCode = request.getParameter("type");
+      String typeCode = request.getParameter("type");
 
-    TypeCode type = typeFacade.findByCode(system.getSCode(), typeCode);
+      TypeCode type = typeFacade.findByCode(system.getSCode(), typeCode);
 
-    request.setAttribute("type", type);
+      request.setAttribute("type", type);
 
-    String sectorCode = request.getParameter("sector");
+      String sectorCode = request.getParameter("sector");
 
-    SectorCode sector = sectorFacade.findByCode(sectorCode);
+      SectorCode sector = sectorFacade.findByCode(sectorCode);
 
-    request.setAttribute("sector", sector);
+      request.setAttribute("sector", sector);
 
-    String locatorCode = request.getParameter("locator");
+      String locatorCode = request.getParameter("locator");
 
-    LocatorCode locator = locatorFacade.findByCode(locatorCode);
+      LocatorCode locator = locatorFacade.findByCode(locatorCode);
 
-    request.setAttribute("locator", locator);
+      request.setAttribute("locator", locator);
 
-    request
-        .getRequestDispatcher("/WEB-INF/views/generator/step-five.jsp")
-        .forward(request, response);
+      request
+          .getRequestDispatcher("/WEB-INF/views/generator/step-five.jsp")
+          .forward(request, response);
+    } catch (Exception e) {
+      throw new ServletException(e);
+    }
   }
 }

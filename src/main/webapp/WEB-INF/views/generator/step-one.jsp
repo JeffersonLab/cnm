@@ -11,7 +11,7 @@
     </jsp:attribute>        
     <jsp:body>
         <section>
-            <h2 id="page-header-title">Name <c:out value="${title}"/></h2>
+            <h2 class="page-header-title">Name <c:out value="${title}"/></h2>
             <h3>Step 1 - Choose a System:</h3>
             <form method="get" action="step-two">
                 <select name="system" class="change-submit">

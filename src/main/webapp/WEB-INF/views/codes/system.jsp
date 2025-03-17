@@ -8,7 +8,7 @@
 <t:codes-page title="${title}">  
     <jsp:attribute name="stylesheets">
         <style type="text/css">
-            #page-header-title {
+            .page-header-title {
                 margin-bottom: 16px;
             }
         </style>
@@ -18,7 +18,7 @@
     </jsp:attribute>        
     <jsp:body>
         <section>                              
-            <h2 id="page-header-title"><c:out value="${title}"/></h2>
+            <h2 class="page-header-title"><c:out value="${title}"/></h2>
             <div id="chart-wrap" class="chart-wrap-backdrop">
                 <c:set var="readonly" value="${!pageContext.request.isUserInRole('cnm-admin')}"/>
                 <s:editable-row-table-controls excludeAdd="${readonly}" excludeDelete="${readonly}" excludeEdit="${readonly}">

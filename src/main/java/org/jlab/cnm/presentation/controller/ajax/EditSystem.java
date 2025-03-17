@@ -34,18 +34,18 @@ public class EditSystem extends HttpServlet {
   protected void doPost(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
 
-    BigInteger id = ParamConverter.convertBigInteger(request, "id");
-    Character code = ParamConverter.convertCharacter(request, "code");
-    String description = request.getParameter("description");
-
     String stat = "ok";
     String error = null;
 
     try {
+      BigInteger id = ParamConverter.convertBigInteger(request, "id");
+      Character code = ParamConverter.convertCharacter(request, "code");
+      String description = request.getParameter("description");
+
       systemFacade.editSystem(id, code, description);
     } catch (UserFriendlyException e) {
       stat = "fail";
-      error = "Unable to edit System: " + e.getMessage();
+      error = "Unable to edit System: " + e.getUserMessage();
     } catch (EJBAccessException e) {
       stat = "fail";
       error = "Unable to edit System: Not authenticated / authorized (do you need to re-login?)";

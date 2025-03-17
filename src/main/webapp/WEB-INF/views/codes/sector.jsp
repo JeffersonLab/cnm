@@ -35,7 +35,7 @@
     <jsp:body>
         <section>    
             <s:filter-flyout-widget clearButton="true">
-                <form id="filter-form" method="get" action="sector">
+                <form class="filter-form" method="get" action="sector">
                     <div id="filter-form-panel">
                         <fieldset>
                             <legend>Filter</legend>
@@ -61,10 +61,10 @@
                             </ul>
                         </fieldset>	
                     </div>
-                    <input id="filter-form-submit-button" type="submit" value="Apply"/>
+                    <input class="filter-form-submit-button" type="submit" value="Apply"/>
                 </form>
             </s:filter-flyout-widget>
-            <h2 id="page-header-title"><c:out value="${title}"/></h2>
+            <h2 class="page-header-title"><c:out value="${title}"/></h2>
             <div class="message-box"><c:out value="${selectionMessage}"/></div>
             <div id="chart-wrap" class="chart-wrap-backdrop">
                 <c:set var="readonly" value="${!pageContext.request.isUserInRole('cnm-admin')}"/>
