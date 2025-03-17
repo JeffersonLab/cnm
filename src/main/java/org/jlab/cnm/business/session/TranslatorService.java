@@ -21,7 +21,7 @@ public class TranslatorService {
 
   @PermitAll
   public String translate(String query) {
-    String meaning = "Unknown";
+    String meaning = "";
 
     if (query != null && !query.isEmpty()) {
       query = query.toUpperCase();
