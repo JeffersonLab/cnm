@@ -8,7 +8,7 @@
 <t:codes-page title="${title}">  
     <jsp:attribute name="stylesheets">
         <style type="text/css">
-            #page-header-title {
+            .page-header-title {
                 margin-bottom: 16px;
             }
         </style>
