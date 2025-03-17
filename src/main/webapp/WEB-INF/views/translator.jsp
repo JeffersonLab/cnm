@@ -71,7 +71,7 @@
     </jsp:attribute>        
     <jsp:body>
         <section>
-            <h2 id="page-header-title"><c:out value="${title}"/></h2>
+            <h2 class="page-header-title"><c:out value="${title}"/></h2>
             <table id="translation-table" class="data-table">
                 <thead>
                     <tr>
