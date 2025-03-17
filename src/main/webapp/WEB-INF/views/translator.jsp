@@ -31,6 +31,8 @@
             jlab.translate = function() {
                 var query = $("#name-input").val();
 
+                history.replaceState(null, null, "/cnm/translator/" + encodeURIComponent(query));
+
                 $("#meaning").text("").addClass("button-indicator");
 
                 var request = jQuery.ajax({
@@ -46,7 +48,7 @@
                     if (json.meaning !== null && json.meaning !== '' && json.meaning !== 'null') {
                         $("#meaning").removeClass("button-indicator").text(json.meaning);
                     } else {
-                        $("#meaning").removeClass("button-indicator").text("Name not recognized");
+                        $("#meaning").removeClass("button-indicator").text("");
                     }
                 });
 
@@ -67,6 +69,10 @@
                 window.open(jlab.cedServerUrl + '/inventory?q=' + encodeURIComponent(query) + '*');
                 return false;
             });
+
+            $(function() {
+                jlab.translate();
+            });
         </script>
     </jsp:attribute>        
     <jsp:body>
@@ -81,7 +87,7 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td><input id="name-input" type="text" placeholder="<Enter Name Here>"/></td>
+                        <td><input id="name-input" type="text" placeholder="<Enter Name Here>" value="${fn:escapeXml(param.name)}"/></td>
                         <td><div id="meaning"></div></td>
                     </tr>
                 </tbody>

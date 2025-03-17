@@ -14,4 +14,9 @@
         <to>/resources/$2</to>
     </rule>
 
+    <rule>
+        <from>^/translator/(.*)$</from>
+        <to>/translator?name=${escape:${unescapePath:$1}}</to>
+    </rule>
+
 </urlrewrite>

@@ -21,7 +21,7 @@ public class TranslatorService {
 
   @PermitAll
   public String translate(String query) {
-    String meaning = "Unknown";
+    String meaning = "";
 
     if (query != null && !query.isEmpty()) {
       query = query.toUpperCase();
@@ -33,7 +33,7 @@ public class TranslatorService {
       String systemDescription = "Unknown System";
 
       if (system != null) {
-        systemDescription = system.getDescription();
+        systemDescription = sCode + ": " + system.getDescription();
       }
 
       meaning = systemDescription;
@@ -50,7 +50,7 @@ public class TranslatorService {
         String typeDescription = "Unknown Type";
 
         if (type != null) {
-          typeDescription = type.getDescription();
+          typeDescription = typeCode + ": " + type.getDescription();
         }
 
         meaning = meaning + " + " + typeDescription;
@@ -64,7 +64,7 @@ public class TranslatorService {
         String sectorDescription = "Unknown Sector";
 
         if (sector != null) {
-          sectorDescription = sector.getDescription();
+          sectorDescription = sectorCode + ": " + sector.getDescription();
         }
 
         meaning = meaning + " + " + sectorDescription;
