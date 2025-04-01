@@ -105,6 +105,7 @@
             </div>
         </section>
         <s:editable-row-table-dialog>
+            <section>
             <form id="row-form">
                 <ul class="key-value-list">
                     <li>
@@ -133,6 +134,7 @@
                     </li>                    
                 </ul>  
             </form>
+            </section>
         </s:editable-row-table-dialog>
     </jsp:body>         
 </t:codes-page>

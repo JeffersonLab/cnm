@@ -470,8 +470,8 @@ $(function () {
         resizable: false
     });
     $("#editable-attributes-dialog").dialog({
-        width: 850,
-        minWidth: 850,
+        width: 900,
+        minWidth: 900,
         height: 600,
         minHeight: 600,
         autoOpen: false,
