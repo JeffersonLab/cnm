@@ -2,9 +2,9 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@taglib prefix="t" tagdir="/WEB-INF/tags"%> 
+<%@taglib prefix="s" uri="http://jlab.org/jsp/smoothness"%>
 <c:set var="title" value="Translator"/>
-<t:page title="${title}">  
+<s:page title="${title}">
     <jsp:attribute name="stylesheets">
         <style type="text/css">
             #translation-table {
@@ -95,4 +95,4 @@
             <a id="ced-link" href="#" target="_blank">Search CED</a>
         </section>
     </jsp:body>         
-</t:page>
+</s:page>

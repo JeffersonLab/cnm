@@ -2,9 +2,9 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@taglib prefix="t" tagdir="/WEB-INF/tags"%> 
+<%@taglib prefix="s" uri="http://jlab.org/jsp/smoothness"%>
 <c:set var="title" value="Generator"/>
-<t:page title="${title} - Step 3">  
+<s:page title="${title} - Step 3">
     <jsp:attribute name="stylesheets">
     </jsp:attribute>
     <jsp:attribute name="scripts">        
@@ -59,4 +59,4 @@
             <p>Don't see a good fit?  <a id="propose-link" href="mailto:cdubbe@jlab.org?subject=Nomenclature: New Sector Proposal">Propose a new sector</a></p>
         </section>
     </jsp:body>         
-</t:page>
+</s:page>

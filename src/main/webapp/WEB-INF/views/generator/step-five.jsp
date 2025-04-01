@@ -2,9 +2,9 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@taglib prefix="t" tagdir="/WEB-INF/tags"%> 
+<%@taglib prefix="s" uri="http://jlab.org/jsp/smoothness"%>
 <c:set var="title" value="Generator"/>
-<t:page title="${title} - Step 5">  
+<s:page title="${title} - Step 5">
     <jsp:attribute name="stylesheets">
     </jsp:attribute>
     <jsp:attribute name="scripts">        
@@ -39,4 +39,4 @@
             <p>Want to reserve your new element name?   <a href="mailto:cedadm@jlab.org?subject=Nomenclature">Contact the CED administrator</a></p>
         </section>
     </jsp:body>         
-</t:page>
+</s:page>

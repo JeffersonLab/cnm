@@ -102,6 +102,7 @@
             </div>
         </section>  
         <s:editable-row-table-dialog>
+            <section>
             <form id="row-form">
                 <ul class="key-value-list">
                     <li>
@@ -138,17 +139,22 @@
                     </li>                    
                 </ul>  
             </form>
+            </section>
         </s:editable-row-table-dialog>
         <div id="attributes-dialog" class="dialog" title="Attributes">
+            <section>
             <div id="attributes-panel"></div>
+            </section>
         </div>
         <div id="editable-attributes-dialog" class="dialog" title="Attributes">
+            <section>
             <div id="edit-attributes-wrapper">
                 <div id="editable-attributes-panel"></div>
                 <div id="attribute-add-button-panel">
                     <button type="button" id="add-attribute-button">Add</button>
                 </div>
             </div>
+            </section>
             <div class="dialog-button-panel">     
                 <button type="button" id="edit-save-button" class="dialog-submit-button">Save</button>
                 <button type="button" id="edit-cancel-button" class="dialog-close-button">Cancel</button>                
