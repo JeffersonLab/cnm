@@ -32,11 +32,9 @@ dependencies {
                     'org.hibernate:hibernate-core:5.3.28.Final',
                     'org.hibernate:hibernate-envers:5.3.28.Final'
 }
-
 tasks.named('jar') {
     enabled = false
 }
-
 war {
     archiveFileName = 'cnm.war'
     filesMatching('WEB-INF/web.xml') {
@@ -51,7 +49,6 @@ war {
         }
     }
 }
-
 spotless {
     java {
         googleJavaFormat()
