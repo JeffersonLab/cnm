@@ -1,8 +1,8 @@
 package org.jlab.cnm.business.session;
 
-import javax.annotation.security.PermitAll;
-import javax.ejb.EJB;
-import javax.ejb.Stateless;
+import jakarta.annotation.security.PermitAll;
+import jakarta.ejb.EJB;
+import jakarta.ejb.Stateless;
 import org.jlab.cnm.persistence.entity.SectorCode;
 import org.jlab.cnm.persistence.entity.SystemCode;
 import org.jlab.cnm.persistence.entity.TypeCode;
