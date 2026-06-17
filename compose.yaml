@@ -3,25 +3,29 @@ services:
     extends:
       file: deps.yaml
       service: oracle
+    container_name: cnm-oracle
 
   keycloak:
     extends:
       file: deps.yaml
       service: keycloak
+    container_name: cnm-keycloak
 
   puppet:
     extends:
       file: deps.yaml
       service: puppet
+    container_name: cnm-puppet
 
   mailhog:
     extends:
       file: deps.yaml
       service: mailhog
+    container_name: cnm-mailhog
 
   cnm:
     hostname: cnm
-    container_name: cnm
+    container_name: cnm-dev
     ports:
       - "8443:8443"
       - "8080:8080"

@@ -1,0 +1,30 @@
+name: cnm-devcontainers
+services:
+  oracle:
+    extends:
+      file: ../compose.yaml
+      service: oracle
+    container_name: cnm-oracle-devc
+
+  keycloak:
+    extends:
+      file: ../compose.yaml
+      service: keycloak
+    container_name: cnm-keycloak-devc
+
+  mailhog:
+    extends:
+      file: ../compose.yaml
+      service: mailhog
+    container_name: cnm-mailhog-devc
+
+  puppet:
+    extends:
+      file: ../compose.yaml
+      service: puppet
+    container_name: cnm-puppet-devc
+
+  dev:
+    image: jeffersonlab/cnm:latest
+    hostname: dev
+    container_name: cnm-dev-devc
