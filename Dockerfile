@@ -52,4 +52,4 @@ ENV BACKEND_SERVER_URL='http://cnm:8080'
 ENV FRONTEND_SERVER_URL='https://localhost:8443'
 
 # App specific
-ENV CED_SERVER_URL='https://cebaf.jlab.org/ced'
+ENV CED_SERVER_URL='https://ace.jlab.org/ced'
